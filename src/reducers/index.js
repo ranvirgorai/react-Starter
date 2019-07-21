@@ -1,5 +1,30 @@
-import {combineReducers} from 'redux'
-import commentsReducer from './comments'
-export default combineReducers({
-    comments:commentsReducer
-})
+// import {combineReducers} from 'redux'
+// import commentsReducer from './comments'
+// export default combineReducers({
+//     comments:commentsReducer
+// })
+
+/**
+ * Combine all reducers in this file and export the combined reducers.
+ */
+
+import { combineReducers } from 'redux';
+import { connectRouter } from 'connected-react-router';
+
+import history from 'utils/history';
+import globalReducer from './global';
+import languageProviderReducer from 'containers/LanguageProvider/reducer';
+
+/**
+ * Merges the main reducer with the router state and dynamically injected reducers
+ */
+export default function createReducer(injectedReducers = {}) {
+  const rootReducer = combineReducers({
+    global: globalReducer,
+    language: languageProviderReducer,
+    router: connectRouter(history),
+    ...injectedReducers,
+  });
+
+  return rootReducer;
+}
