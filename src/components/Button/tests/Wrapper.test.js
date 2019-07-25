@@ -1,9 +1,13 @@
 import React from 'react';
-import { render } from 'react-testing-library';
+import { render } from '@testing-library/react';
 
 import Wrapper from '../Wrapper';
 
 describe('<Wrapper />', () => {
+  it("should match the snapshot", () => {
+    const renderedComponent = render(<Wrapper/>);
+    expect(renderedComponent).toMatchSnapshot();
+  });
   it('should render an <div> tag', () => {
     const { container } = render(<Wrapper />);
     expect(container.querySelector('div')).not.toBeNull();

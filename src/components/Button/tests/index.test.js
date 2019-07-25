@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { fireEvent, render } from 'react-testing-library';
+import { fireEvent, render } from '@testing-library/react';
 
 import Button from '../index';
 
@@ -18,6 +18,10 @@ const renderComponent = (props = {}) =>
   );
 
 describe('<Button />', () => {
+  it("should match the snapshot", () => {
+    const renderedComponent = render(<Button>Click Me</Button>);
+    expect(renderedComponent).toMatchSnapshot();
+  });
   it('should render an <a> tag if no route is specified', () => {
     const { container } = renderComponent({ href });
     expect(container.querySelector('a')).not.toBeNull();

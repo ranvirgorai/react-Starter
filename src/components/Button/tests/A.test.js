@@ -1,9 +1,13 @@
 import React from 'react';
-import { render } from 'react-testing-library';
+import { render } from "@testing-library/react";
 
 import A from '../A';
 
 describe('<A />', () => {
+  it("should match the snapshot", () => {
+    const renderedComponent = render(<A  />);
+    expect(renderedComponent).toMatchSnapshot();
+  });
   it('should render an <a> tag', () => {
     const { container } = render(<A />);
     expect(container.querySelector('a')).not.toBeNull();

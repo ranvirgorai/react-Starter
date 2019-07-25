@@ -1,93 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<LoadingIndicator /> should match the snapshot 1`] = `
+exports[`<StyledButton /> should match the snapshot 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div
-        class="sc-bdVaJa kAPAHy"
-      >
-        <div
-          class="sc-bwzfXH kHYkBk"
-        />
-        <div
-          class="sc-htpNat jSPapt"
-        />
-        <div
-          class="sc-bxivhb leTqfi"
-        />
-        <div
-          class="sc-ifAKCX lkOVGt"
-        />
-        <div
-          class="sc-EHOje chnvPL"
-        />
-        <div
-          class="sc-bZQynM iqYbZJ"
-        />
-        <div
-          class="sc-gzVnrw CCqTk"
-        />
-        <div
-          class="sc-htoDjs bWxymj"
-        />
-        <div
-          class="sc-dnqmqq ieSRwc"
-        />
-        <div
-          class="sc-iwsKbI cdedUB"
-        />
-        <div
-          class="sc-gZMcBi bhuLmD"
-        />
-        <div
-          class="sc-gqjmRU kpUady"
-        />
-      </div>
+      <button
+        class="sc-bdVaJa cqWTUk"
+      />
     </div>
   </body>,
   "container": <div>
-    <div
-      class="sc-bdVaJa kAPAHy"
-    >
-      <div
-        class="sc-bwzfXH kHYkBk"
-      />
-      <div
-        class="sc-htpNat jSPapt"
-      />
-      <div
-        class="sc-bxivhb leTqfi"
-      />
-      <div
-        class="sc-ifAKCX lkOVGt"
-      />
-      <div
-        class="sc-EHOje chnvPL"
-      />
-      <div
-        class="sc-bZQynM iqYbZJ"
-      />
-      <div
-        class="sc-gzVnrw CCqTk"
-      />
-      <div
-        class="sc-htoDjs bWxymj"
-      />
-      <div
-        class="sc-dnqmqq ieSRwc"
-      />
-      <div
-        class="sc-iwsKbI cdedUB"
-      />
-      <div
-        class="sc-gZMcBi bhuLmD"
-      />
-      <div
-        class="sc-gqjmRU kpUady"
-      />
-    </div>
+    <button
+      class="sc-bdVaJa cqWTUk"
+    />
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

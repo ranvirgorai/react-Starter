@@ -1,18 +1,39 @@
-
+import { getHomeFeed, getHomeFeedSuccess, getHomeFeedError } from "../actions";
 import {
-  defaultAction,
-} from '../actions';
-import {
-  DEFAULT_ACTION,
-} from '../constants';
+  GET_HOME_FEED,
+  GET_HOME_FEED_SUCCESS,
+  GET_HOME_FEED_ERROR
+} from "../constants";
 
-describe('Login actions', () => {
-  describe('Default Action', () => {
-    it('has a type of DEFAULT_ACTION', () => {
+describe("Home actions", () => {
+  describe("Get home feed", () => {
+    it("has a type of GET_HOME_FEED", () => {
+      const data = { hello: "world" };
       const expected = {
-        type: DEFAULT_ACTION,
+        type: GET_HOME_FEED,
+        data
       };
-      expect(defaultAction()).toEqual(expected);
+      expect(getHomeFeed(data)).toEqual(expected);
+    });
+  });
+  describe("Get home feed success", () => {
+    it("has a type of GET_HOME_FEED_SUCCESS", () => {
+      const data = { hello: "world" };
+      const expected = {
+        type: GET_HOME_FEED_SUCCESS,
+        data
+      };
+      expect(getHomeFeedSuccess(data)).toEqual(expected);
+    });
+  });
+  describe("Get home feed error", () => {
+    it("has a type of GET_HOME_FEED_ERROR", () => {
+      const error = { hello: "world" };
+      const expected = {
+        type: GET_HOME_FEED_ERROR,
+        error
+      };
+      expect(getHomeFeedError(error)).toEqual(expected);
     });
   });
 });

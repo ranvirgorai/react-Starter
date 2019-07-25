@@ -1,10 +1,17 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
+import React from 'react';
+import { render } from "@testing-library/react";
+import FormView from '../index';
 
-// import FormView from '../index';
+
 
 describe('<FormView />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  const {container}=render(<FormView/>)
+  it('Should render a from element', () => {
+    expect(container.querySelector('form')).toBeInTheDocument;
+  });
+
+  it("should match the snapshot", () => {
+    const renderedComponent = render(<FormView/>);
+    expect(renderedComponent).toMatchSnapshot();
   });
 });

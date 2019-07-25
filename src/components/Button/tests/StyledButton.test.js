@@ -1,9 +1,13 @@
 import React from 'react';
-import { render } from 'react-testing-library';
+import { render } from '@testing-library/react';
 
 import StyledButton from '../StyledButton';
 
 describe('<StyledButton />', () => {
+  it("should match the snapshot", () => {
+    const renderedComponent = render(<StyledButton/>);
+    expect(renderedComponent).toMatchSnapshot();
+  });
   it('should render an <button> tag', () => {
     const { container } = render(<StyledButton />);
     expect(container.querySelector('button')).not.toBeNull();

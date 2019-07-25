@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-testing-library';
+import { render } from '@testing-library/react';
 import { FormattedMessage, defineMessages } from 'react-intl';
 import { Provider } from 'react-redux';
 import { browserHistory } from 'react-router-dom';
@@ -18,7 +18,7 @@ const messages = defineMessages({
 });
 
 describe('<LanguageProvider />', () => {
-  it('should render its children', () => {
+  test('should render its children', () => {
     const children = <h1>Test</h1>;
     const { container } = render(
       <LanguageProvider messages={messages} locale="en">
