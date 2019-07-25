@@ -4,7 +4,7 @@
  *
  */
 
-import React, { Component,Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -19,11 +19,10 @@ import {
   setLoggedInUser,
   setLoggedInUserLevel,
 } from 'utils/auth';
-import LoginForm from 'components/LoginForm';
 import FormWorkspace from 'components/Workspace/Form';
 import { TITLE } from './constants';
-import { makeLogin, makeLoginRest  } from './actions';
-import selectLoginSession from './selectors';
+import { getHomeFeed  } from './actions';
+import selectHomeFeed from './selectors';
 import reducer from './reducer';
 import saga from './sagas';
 
@@ -86,22 +85,16 @@ class Login extends Component {
   render() {
     
     return (
-      <Fragment>
+      <div>
         <Helmet
           title={` ${TITLE} - Login`}
           meta={[{ name: 'description', content: '' }]}
         /> 
         
         <FormWorkspace>
-          <LoginForm
-            canSubmit={this.canSubmit()}
-            onSubmit={this.onSubmit}
-            onFormEnter={this.dispatchToStore}
-            isLogging={this.state.isLogging}
-            status={this.props.status}
-          />
+       <h1>Home</h1>
         </FormWorkspace>
-        </Fragment>
+      </div>
     );
   }
 }
@@ -111,18 +104,14 @@ Login.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  session: selectLoginSession(),
-  status: selectLoginSession(),
+  session: selectHomeFeed(),
+  status: selectHomeFeed(),
 });
 
 function mapDispatchToProps(dispatch) {
-  console.log("object")
   return {
-    triggerLogin: data => {
-      dispatch(makeLogin(data));
-    },
-    triggerLoginRest: () => {
-      dispatch(makeLoginRest());
+    triggerGetHomeFeed: data => {
+      dispatch(getHomeFeed(data));
     },
   };
 }
@@ -132,8 +121,8 @@ const withConnect = connect(
   mapDispatchToProps,
 )
 
-const withReducer = injectReducer({ key: 'login', reducer });
-const withSaga = injectSaga({ key: 'login', saga });
+const withReducer = injectReducer({ key: 'home', reducer });
+const withSaga = injectSaga({ key: 'home', saga });
 
 
 export default compose(

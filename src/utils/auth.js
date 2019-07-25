@@ -1,4 +1,4 @@
-//import { browserHistory } from 'react-router';
+import browserHistory from 'utils/history'
 
 export function isLoggedIn() {
   return !!localStorage.getItem('token');
@@ -38,14 +38,14 @@ export function authRedirect(userLevel = null, firstTime = null) {
   if (!userLevel) {
     resetUser();
     path = '/';
-    //return browserHistory.push(path);
+    return browserHistory.push(path);
   }
   if (userLevel === -1) {
     path = '/register/complete';
   } else {
     path = '/dashboard';
   }
-  //return browserHistory.push(path);
+  return browserHistory.push(path);
 }
 
 export function resetUser() {

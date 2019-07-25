@@ -1,27 +1,24 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import BrandLogo from 'components/BrandLogo';
-import LegalFooter from 'components/LegalFooter';
+import BrandLogo from "components/BrandLogo";
+import LegalFooter from "components/LegalFooter";
+import { Row, Col } from "react-bootstrap";
 
 const LogoCenter = styled.div({
-  textAlign: 'center',
+  textAlign: "center"
 });
 
 export default function FormWorkspace(props) {
   return (
-    <div>
-      <div className="container">
-        <div className="row">
-          <div className="col-xs-4 col-xs-offset-4">
-            <LogoCenter>
-              <BrandLogo />
-            </LogoCenter>
-            { React.Children.toArray(props.children)}
-            <LegalFooter />
-          </div>
-        </div>
-      </div>
-    </div>
+    <Row>
+      <Col xs={12} md={12}>
+        <LogoCenter>
+          <BrandLogo />
+        </LogoCenter>
+        {React.Children.toArray(props.children)}
+        <LegalFooter />
+      </Col>
+    </Row>
   );
 }

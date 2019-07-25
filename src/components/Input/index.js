@@ -8,7 +8,7 @@ const InputEl = styled.input({
 
 function Input(props) {
   let element;
-  if (props.type == 'checkbox') {
+  if (props.type === 'checkbox') {
     element = <InputEl {...props} />;
   } else {
     element = <InputEl {...props} className="form-control" />;

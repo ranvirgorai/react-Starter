@@ -61,6 +61,7 @@ export default class LoginForm extends PureComponent {
               className="pull-right"
               disabled={!canSubmit}
               onClick={this.onSubmit}
+              
               // disabled={!canSubmit || this.props.isLogging}
             >
               {
