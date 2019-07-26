@@ -51,6 +51,7 @@ export function resetUser() {
   localStorage.removeItem("userLevel");
   localStorage.removeItem("firstTime");
   localStorage.removeItem("user");
+  localStorage.removeItem("userId");
 }
 
 export function setUser(user) {
@@ -71,11 +72,15 @@ export function setUser(user) {
   }
 }
 
-export function defaultRedirection() {
-  if (!getToken() && !getUserId()) {
-    return <Redirect to="/login" />;
-  } else if (!getToken() && getUserId()) {
+export function defaultRedirection(screen) {
+  if (!getToken() && getUserId()) {
     return <Redirect to="/verify" />;
+  } else if (!getToken()) {
+    return <Redirect to="/login" />;
+  } else if (getToken() && getUserId()) {
+    if (screen === "verify" || screen === "login") {
+      return <Redirect to="/" />;
+    }
   } else {
     return null;
   }

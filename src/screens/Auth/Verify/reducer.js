@@ -3,25 +3,27 @@ import { VERIFY_OTP, VERIFY_OTP_SUCCESS, VERIFY_OTP_ERROR } from './constants';
 
 export const initialState = fromJS({});
 
-function loginReducer(state = initialState, action) {
+function verifyReducer(state = initialState, action) {
   switch (action.type) {
     case VERIFY_OTP:
       return state
-        .set('submit', true)
-        .set('token', null)
-        .set('user', null)
-        .set('error', null);
-    case VERIFY_OTP_SUCCESS:
-      return state.set('token', action.token).set('user', action.user);
+        .set("loading", true)
+        .set("user", null)
+        .set("error", null);
+    case VERIFY_OTP_SUCCESS:{
+      return state
+        .set("loading", false)
+        .set("error", null)
+        .set("user", action.data.data);
+    }
     case VERIFY_OTP_ERROR:
       return state
-        .set('submit', false)
-        .set('token', null)
-        .set('user', null)
-        .set('error', action.err);
+        .set("loading", false)
+        .set("error", action.error)
+        .set("user", null);
     default:
       return state;
   }
 }
 
-export default loginReducer;
+export default verifyReducer;

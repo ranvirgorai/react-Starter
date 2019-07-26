@@ -1,31 +1,21 @@
-/*
- *
- * Login
- *
- */
+import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { Helmet } from "react-helmet";
+import { createStructuredSelector } from "reselect";
 
-import React, { Component,Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Helmet } from 'react-helmet';
-import { createStructuredSelector } from 'reselect';
+import { compose } from "redux";
+import injectReducer from "utils/injectReducer";
+import injectSaga from "utils/injectSaga";
 
-import { compose } from 'redux';
-import injectReducer from 'utils/injectReducer';
-import injectSaga from 'utils/injectSaga';
-
-import {
-  setLoggedIn,
-  setLoggedInUser,
-  setLoggedInUserLevel,
-} from 'utils/auth';
-import LoginForm from 'components/LoginForm';
-import FormWorkspace from 'components/Workspace/Form';
-import { TITLE } from './constants';
-import { makeLogin, makeLoginRest  } from './actions';
-import selectLoginSession from './selectors';
-import reducer from './reducer';
-import saga from './sagas';
+import { defaultRedirection } from "utils/auth";
+import LoginForm from "components/LoginForm";
+import FormWorkspace from "components/Workspace/Form";
+import { TITLE } from "./constants";
+import { makeLogin, makeLoginRest } from "./actions";
+import selectLoginSession from "./selectors";
+import reducer from "./reducer";
+import saga from "./sagas";
 
 class Login extends Component {
   constructor(props) {
@@ -34,41 +24,11 @@ class Login extends Component {
     this.canSubmit = this.canSubmit.bind(this);
     this.dispatchToStore = this.dispatchToStore.bind(this);
     this.state = {
-      data: {},
+      data: {}
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    // eslint-disable-line
-    const session = nextProps.session && nextProps.session.data;
-    console.log('session', nextProps.session);
-    if (session) {
-      setLoggedIn(session.token);
-      setLoggedInUser(session);
-      setLoggedInUserLevel(session.level);
-      // if ([-1, 0, 1, 2].indexOf(userLevel) !== -1) {
-      //   return authRedirect(userLevel, firstTime);
-      // }
-    }
-    // if (nextProps.status && nextProps.status.error) {
-    //   setTimeout(() => {
-    //     this.setState({ isLogging: false });
-    //   }, 200);
-    // }
-  }
-  componentWillMount() {
-    // const userLevel = getLoggedInUserLevel();
-    // const firstTime = isUserFirstTime();
-    // if (userLevel) {
-    //   return authRedirect(userLevel, firstTime);
-    // }
-  }
-  componentWillUnmount() {
-    //this.props.resetComponentData();
-  }
-
   onSubmit() {
-    console.log("i am called");
     this.setState({ isLogging: true });
     this.props.triggerLogin(this.state.data);
   }
@@ -83,16 +43,15 @@ class Login extends Component {
     data[name] = value;
     this.setState(data);
   }
-  
+
   render() {
-    
     return (
       <Fragment>
         <Helmet
           title={` ${TITLE} - Login`}
-          meta={[{ name: 'description', content: '' }]}
-        /> 
-        
+          meta={[{ name: "description", content: "" }]}
+        />
+        {defaultRedirection("login")}
         <FormWorkspace>
           <LoginForm
             canSubmit={this.canSubmit()}
@@ -102,48 +61,41 @@ class Login extends Component {
             status={this.props.status}
           />
         </FormWorkspace>
-        </Fragment>
+      </Fragment>
     );
   }
 }
 
 Login.propTypes = {
-  onLoginDispatch: PropTypes.func,
+  onLoginDispatch: PropTypes.func
 };
 
 const mapStateToProps = createStructuredSelector({
   session: selectLoginSession(),
-  status: selectLoginSession(),
+  status: selectLoginSession()
 });
 
 function mapDispatchToProps(dispatch) {
-  console.log("object")
   return {
     triggerLogin: data => {
       dispatch(makeLogin(data));
     },
     triggerLoginRest: () => {
       dispatch(makeLoginRest());
-    },
+    }
   };
 }
 
 const withConnect = connect(
   mapStateToProps,
-  mapDispatchToProps,
-)
+  mapDispatchToProps
+);
 
-const withReducer = injectReducer({ key: 'login', reducer });
-const withSaga = injectSaga({ key: 'login', saga });
-
+const withReducer = injectReducer({ key: "login", reducer });
+const withSaga = injectSaga({ key: "login", saga });
 
 export default compose(
   withReducer,
   withSaga,
-  withConnect,
+  withConnect
 )(Login);
-
-
-
-// export default 
-

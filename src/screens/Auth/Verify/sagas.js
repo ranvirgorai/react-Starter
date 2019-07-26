@@ -3,9 +3,10 @@ import request from "utils/request";
 import { AUTH_URL } from "common/apiUrls";
 import { verifyOtpSuccess, verifyOtpError } from "./actions";
 import { VERIFY_OTP } from "./constants";
+import { setUser } from "utils/auth";
 
 export function* verifyOtp(args) {
-  const requestURL = `${AUTH_URL}/verify`;
+  const requestURL = `${AUTH_URL}/login`;
   try {
     const result = yield call(request, requestURL, {
       method: "POST",
@@ -14,6 +15,7 @@ export function* verifyOtp(args) {
     if (result.res && result.res.error) {
       yield put(verifyOtpError(result));
     } else {
+      setUser(result.result);
       yield put(verifyOtpSuccess(result));
     }
   } catch (err) {

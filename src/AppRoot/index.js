@@ -13,31 +13,32 @@ import Verify from "screens/Auth/Verify/Loadable";
 import Home from "screens/Home/Loadable";
 import MyNavbar from "components/MyNavbar";
 import { AppWorkspace, AppWrapper } from "./styles";
-import { getToken, getUserId, defaultRedirection } from "utils/auth";
-//import GlobalStyle from '../../global-styles';
+import {  defaultRedirection, resetUser } from "utils/auth";
+import GlobalStyle from '../../global-styles';
 
 export default function AppRoot(props) {
   return (
     <AppWrapper>
       <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
+        titleTemplate="%s - React Starter"
+        defaultTitle="React Starter"
       >
-        <meta name="description" content="A React.js Boilerplate application" />
+        <meta name="description" content="A React Starter application" />
       </Helmet>
-      <MyNavbar currentPathname={"/"} />
+      <MyNavbar currentPathname={"/"}  onLogout={resetUser}/>
       {/* <AppRoute /> */}
       <AppWorkspace>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={()=><h1>Dashboard</h1>} />
+          <Route path="/home" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/verify" component={Verify} />
           <Route path="" component={() => <div>Not Found</div>} />
         </Switch>
-        {defaultRedirection()}
+        {defaultRedirection("root")}
       </AppWorkspace>
       {/* <Footer /> */}
-      {/* <GlobalStyle /> */}
+      <GlobalStyle />
     </AppWrapper>
   );
 }

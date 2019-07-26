@@ -59,13 +59,11 @@ export default class LoginForm extends PureComponent {
             <Button
               type="main"
               className="pull-right"
-              disabled={!canSubmit}
               onClick={this.onSubmit}
-              
-              // disabled={!canSubmit || this.props.isLogging}
+              disabled={!canSubmit || this.props.loading}
             >
               {
-                this.props.isLogging ? (<Loading>SENDING... </Loading>) : <span>SEND OTP</span>
+                this.props.loading ? (<Loading>SENDING... </Loading>) : <span>SEND OTP</span>
               }
 
             </Button>
