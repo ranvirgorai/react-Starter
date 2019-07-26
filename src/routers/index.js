@@ -13,6 +13,7 @@ import Verify from "screens/Auth/Verify/Loadable";
 import Home from "screens/Home/Loadable";
 import MyNavbar from "components/MyNavbar";
 import { AppWorkspace, AppWrapper } from "./styles";
+import { getToken, getUserId, defaultRedirection } from "utils/auth";
 //import GlobalStyle from '../../global-styles';
 
 export default function AppRoot(props) {
@@ -33,6 +34,7 @@ export default function AppRoot(props) {
           <Route path="/verify" component={Verify} />
           <Route path="" component={() => <div>Not Found</div>} />
         </Switch>
+        {defaultRedirection()}
       </AppWorkspace>
       {/* <Footer /> */}
       {/* <GlobalStyle /> */}

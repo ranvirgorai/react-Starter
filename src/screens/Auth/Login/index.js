@@ -83,6 +83,7 @@ class Login extends Component {
     data[name] = value;
     this.setState(data);
   }
+  
   render() {
     
     return (
