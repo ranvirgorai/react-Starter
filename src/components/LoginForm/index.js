@@ -20,7 +20,6 @@ export default class LoginForm extends PureComponent {
   }
 
   onSubmit(e) {
-    console.log("object")
     this.props.onSubmit();
     e.preventDefault();
   }

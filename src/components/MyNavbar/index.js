@@ -3,7 +3,6 @@ import React from "react";
 // import styled from "styled-components";
 import { Navbar, Nav } from "react-bootstrap";
 import NavbarLogo from "components/NavbarLogo";
-import { isLoggedIn } from "utils/auth";
 
 // const StyledItem = styled.li`
 //   border-bottom: 2px solid ${props => (props.current ? "#2892cb" : "inherit")};
@@ -47,7 +46,7 @@ export default function MyNavbar(props) {
           <Nav.Link href="#link">Link</Nav.Link>
         </Nav>
         <Nav className="pull-right">
-          {isLoggedIn() ? (
+          {props.isLoggedIn ? (
             <Nav.Link onClick={props.onLogout}>Logout</Nav.Link>
           ) : (
             <Nav.Link href="/login">Login</Nav.Link>

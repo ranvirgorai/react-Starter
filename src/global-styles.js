@@ -7,12 +7,12 @@ import { createGlobalStyle } from 'styled-components';
 //   uploadStyle,
 // } from './screens/Upload';
 /* eslint no-unused-expressions: 0 */
-const GlobalStyle = createGlobalStyle`
 /* ${invoiceStyle}
 ${dropZoneStyle}
 ${uploadMainStyle}
 ${uploadProgressStyle}
 ${uploadStyle} */
+const GlobalStyle = createGlobalStyle`
   html,
   body {
     height: 100%;

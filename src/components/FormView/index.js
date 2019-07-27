@@ -10,7 +10,7 @@ const ViewPort = styled.div({
 
 function FormView(props) {
   return (<ViewPort>
-    <form className={props.className} onSubmit={()=>console.log("i am called")}>
+    <form className={props.className}>
       {React.Children.toArray(props.children)}
     </form>
   </ViewPort>);

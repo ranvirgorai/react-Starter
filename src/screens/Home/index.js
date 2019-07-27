@@ -40,7 +40,6 @@ class Login extends Component {
   componentWillReceiveProps(nextProps) {
     // eslint-disable-line
     const session = nextProps.session && nextProps.session.data;
-    console.log('session', nextProps.session);
     if (session) {
       setLoggedIn(session.token);
       setLoggedInUser(session);
@@ -67,7 +66,7 @@ class Login extends Component {
   }
 
   onSubmit() {
-    console.log("i am called");
+    
     this.setState({ isLogging: true });
     this.props.triggerLogin(this.state.data);
   }

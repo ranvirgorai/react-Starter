@@ -85,7 +85,7 @@ export function request(url, options) {
       'x-source-country': 'CA',
     };
     options.credentials = 'include';
-    console.log('POST OPTIONS :: ', options);
+    
   }
 
   return fetch(url, options)

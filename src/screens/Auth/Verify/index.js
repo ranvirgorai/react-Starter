@@ -64,8 +64,8 @@ class Verify extends Component {
             </div>
             <div className="form-group">
               <div className="col-sm-12">
-                {this.props.status && (
-                  <ErrorMessage error={this.props.status.error} />
+                {this.props.error && (
+                  <ErrorMessage error={this.props.error} />
                 )}
                 <Button
                   type="main"
