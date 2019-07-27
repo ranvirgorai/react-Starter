@@ -5,7 +5,7 @@ import ErrorMessage from "../index";
 
 describe("Component: ErrorMessage", () => {
   it("should match the snapshot", () => {
-    const renderedComponent = render(<ErrorMessage/>);
+    const renderedComponent = render(<ErrorMessage />);
     expect(renderedComponent).toMatchSnapshot();
   });
   describe("On default render", () => {

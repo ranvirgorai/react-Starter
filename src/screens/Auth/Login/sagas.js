@@ -23,7 +23,7 @@ export function* loginUser(args) {
       yield put(push("/verify"));
     }
   } catch (err) {
-    yield put(makeLoginError(err));
+    yield put(makeLoginError({ message: err.message }));
   }
 }
 

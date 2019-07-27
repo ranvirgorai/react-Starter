@@ -12,7 +12,7 @@ import Loading from "components/Loading";
 import FormView from "components/FormView";
 import Input from "components/Input";
 import ErrorMessage from "components/ErrorMessage";
-import {getUserId, defaultRedirection} from "utils/auth";
+import { getUserId, defaultRedirection } from "utils/auth";
 import FormWorkspace from "components/Workspace/Form";
 import { TITLE } from "./constants";
 import { verifyOtp, verifyOtpRest } from "./actions";
@@ -64,16 +64,18 @@ class Verify extends Component {
             </div>
             <div className="form-group">
               <div className="col-sm-12">
-                {this.props.error && (
-                  <ErrorMessage error={this.props.error} />
+                {this.props.verifyData.error && (
+                  <ErrorMessage error={this.props.verifyData.error.message} />
                 )}
                 <Button
                   type="main"
                   className="pull-right"
                   onClick={this.onSubmit}
-                  disabled={this.props.loginStatus.loading || !this.state.mobileOTP}
+                  disabled={
+                    this.props.verifyData.loading || !this.state.mobileOTP
+                  }
                 >
-                  {this.props.loading ? (
+                  {this.props.verifyData.loading ? (
                     <Loading>Verifying... </Loading>
                   ) : (
                     <span>VERIFY</span>
@@ -97,8 +99,7 @@ Verify.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  loginStatus: selectLoginSession(),
-  status: selectLoginSession()
+  verifyData: selectLoginSession()
 });
 
 function mapDispatchToProps(dispatch) {

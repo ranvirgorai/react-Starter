@@ -6,7 +6,6 @@ import { createGlobalStyle } from 'styled-components';
 //   uploadProgressStyle,
 //   uploadStyle,
 // } from './screens/Upload';
-/* eslint no-unused-expressions: 0 */
 /* ${invoiceStyle}
 ${dropZoneStyle}
 ${uploadMainStyle}

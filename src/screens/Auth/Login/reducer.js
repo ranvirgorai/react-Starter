@@ -10,17 +10,18 @@ function loginReducer(state = initialState, action) {
         .set("loading", true)
         .set("user", null)
         .set("error", null);
-    case MAKE_LOGIN_SUCCESS:{
+    case MAKE_LOGIN_SUCCESS: {
       return state
         .set("loading", false)
         .set("error", null)
         .set("user", action.data.data);
     }
-    case MAKE_LOGIN_ERROR:
+    case MAKE_LOGIN_ERROR: {
       return state
         .set("loading", false)
         .set("error", action.error)
         .set("user", null);
+    }
     default:
       return state;
   }

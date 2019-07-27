@@ -1,9 +1,8 @@
 {
   "name": "my-react-starter",
-  "version": "0.1.0",
+  "version": "0.0.01",
   "private": true,
   "dependencies": {
-    "@babel/polyfill": "^7.4.4",
     "axios": "^0.19.0",
     "connected-react-router": "^6.5.2",
     "fontfaceobserver": "^2.1.0",
@@ -76,16 +75,10 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^4.0.0",
     "@testing-library/react": "^8.0.6",
-    "eslint": "^6.1.0",
-    "eslint-config-airbnb": "^17.1.1",
-    "eslint-config-prettier": "^6.0.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.14.3",
     "husky": "^3.0.1",
     "lint-staged": "^9.2.1",
     "moxios": "^0.4.0",
+    "pre-commit": "^1.2.2",
     "prettier": "^1.18.2",
     "pretty-quick": "^1.11.1"
   }

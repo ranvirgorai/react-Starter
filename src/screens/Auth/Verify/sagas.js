@@ -12,14 +12,14 @@ export function* verifyOtp(args) {
       method: "POST",
       body: args.data
     });
-    if (result.res && result.res.error) {
+    if (result.action !== 1) {
       yield put(verifyOtpError(result));
     } else {
       setUser(result.result);
       yield put(verifyOtpSuccess(result));
     }
   } catch (err) {
-    yield put(verifyOtpError(err));
+    yield put(verifyOtpError({ message: err.message }));
   }
 }
 

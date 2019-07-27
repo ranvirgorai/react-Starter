@@ -57,8 +57,8 @@ class Login extends Component {
             canSubmit={this.canSubmit()}
             onSubmit={this.onSubmit}
             onFormEnter={this.dispatchToStore}
-            isLogging={this.state.isLogging}
-            status={this.props.status}
+            loading={this.props.loginData.loading}
+            error={this.props.loginData.error}
           />
         </FormWorkspace>
       </Fragment>
@@ -71,8 +71,7 @@ Login.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  session: selectLoginSession(),
-  status: selectLoginSession()
+  loginData: selectLoginSession()
 });
 
 function mapDispatchToProps(dispatch) {
